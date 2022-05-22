@@ -21,6 +21,11 @@ and give all the necessary annotations
 Create a new file in the resources folder as application-dev.properties and give the server.port=8083
 Now change the profile in the application.properties file as spring.profiles.active=dev
 
+### STEP-7: PROVIDING AUTHENTICATION
+Create a class extending "WebSecurityConfigurerAdapter" class and add all the security dependencies in pom.xml file
+Update the maven project
+provide GET requests,DELETE requests  access to "user" roles only and PUT requests,POST requests access to only "admin" roles.
+
 ### STEP-6: BUILDING AND RUNNING THE CODE
 Open the terminal and run "mvn clean install" command to build and then run the "mvn spring-boot:run" command to run the application
 
@@ -33,28 +38,35 @@ DELETE http://localhost:8083/delete/student?name=Shyam
 ### STEP-7 TEST WITH CURL
 
 #### CURL GET:
-curl --location --request GET 'http://localhost:8083/get/student?name=shyam&rollNo=111'
+
+curl --location --request GET 'localhost:8083/get/student?name=shyam&rollNo=111' \
+--header 'Authorization: Basic dXNlcjEyMzpwYXNzd29yZA==' \
+--header 'Cookie: JSESSIONID=F9374A46FDF3BA94DCE2425CF8F9CAA4'
 
 #### CURL POST:
 curl --location --request POST 'localhost:8083/post/student/' \
+--header 'Authorization: Basic YWRtaW4xMjM6cGFzc3dvcmQ=' \
 --header 'Content-Type: application/json' \
+--header 'Cookie: JSESSIONID=F9374A46FDF3BA94DCE2425CF8F9CAA4' \
 --data-raw '{
-"name": "Shyam",
-"age": "23",
+"name": "Reddy",
+"age": "22",
 "rollNo": "D7",
 "std": "Engineering"
 }'
 #### CURL PUT:
-curl --location --request PUT 'http://localhost:8083/put/student/Sunder' \
+curl --location --request PUT 'localhost:8083/put/student/shyam' \
+--header 'Authorization: Basic YWRtaW4xMjM6cGFzc3dvcmQ=' \
 --header 'Content-Type: application/json' \
---header 'Cookie: JSESSIONID=A6D93D5B9A0D159ED8B34210F28C5DA7' \
+--header 'Cookie: JSESSIONID=F9374A46FDF3BA94DCE2425CF8F9CAA4' \
 --data-raw '{
-"name": "Shyam",
-"age": "23",
-"rollNo": "D7",
-"std": "Engineering"
+
+    "name": "reddy",
+    "age": "22",
+    "rollNo": "D7",
+    "std": "Engineering"
 }'
 #### CURL DELETE:
-curl --location --request DELETE 'localhost:8083/delete/student?name=Shyam'
-
-
+curl --location --request DELETE 'localhost:8083/delete/student?name=Shyam' \
+--header 'Authorization: Basic dXNlcjEyMzpwYXNzd29yZA==' \
+--header 'Cookie: JSESSIONID=F9374A46FDF3BA94DCE2425CF8F9CAA4'

@@ -33,9 +33,8 @@ public class Controller {
     @PutMapping("/put/student/{name}")
     public String updateStudentDetail(@RequestBody Student newStudentObject, @PathVariable String name){
         newStudentObject.setName(name);
-/*      Because of the above statement the PathVariable value is set to the name variable
-        If I choose not to write the above line of code then it will consider the name value that is given in the RequestBody irrespective of the value of the PathVariable
-        */
+//    Because of the above statement the PathVariable value is set to the name variable
+
         return newStudentObject + "updated with name :" + name;
     }
 
