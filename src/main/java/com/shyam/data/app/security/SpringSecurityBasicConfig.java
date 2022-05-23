@@ -13,10 +13,10 @@ public class SpringSecurityBasicConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.httpBasic().and().authorizeRequests()
-     .antMatchers(HttpMethod.POST, "/post/**").hasAnyRole("ADMIN")
-      .antMatchers(HttpMethod.PUT, "/put/**").hasAnyRole("ADMIN")
-      .antMatchers(HttpMethod.GET, "/get/**").hasAnyRole("USER")
-      .antMatchers(HttpMethod.DELETE, "/delete/**").hasAnyRole("USER").and().csrf().disable().headers()
+     .antMatchers(HttpMethod.POST, "/students/**").hasAnyRole("ADMIN")
+      .antMatchers(HttpMethod.PUT, "/students/**").hasAnyRole("ADMIN")
+      .antMatchers(HttpMethod.GET, "/students/**").hasAnyRole("USER")
+      .antMatchers(HttpMethod.DELETE, "/students/**").hasAnyRole("USER").and().csrf().disable().headers()
       .frameOptions().disable();
 /*    .hasAnyRole("USER", "ADMIN"), we can add multiple roles like this in the above commands
     To authenticate all the post requests of student then we should write like this "post/student/**"
