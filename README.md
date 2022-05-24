@@ -1,85 +1,17 @@
-## Name: E. Shyam Sunder Reddy
-## TCS_EmpId: 2278249
+# Getting Started
 
-### STEP-1: CREATING THE PROJECT USING CLI
-mvn archetype:generate -DgroupId=com.shyam.data -DartifactId=assignment1 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+### Reference Documentation
+For further reference, please consider the following sections:
 
-### STEP-2: IMPORTING THE PROJECT INTO THE INTELLIJ
-Import the created project as maven project into Intellij
+* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/)
+* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/#build-image)
+* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#boot-features-developing-web-applications)
 
-### STEP-3: ADDING THE DEPENDENCIES TO THE POM.XML FILE
-Add the latest version parent tag, Spring-starter,web,test, dependencies and load the Maven project
-Add Spring JPA, Devtools, H2 database, Json dataFormat dependencies and load the Maven project (dependencies required for the connection to the embedded database)
+### Guides
+The following guides illustrate how to use some features concretely:
 
-### STEP-4: CREATING THE SPRINGBOOT APPLICATION
-Make the App class as the SpringBootApplication and  give all the necessary annotations.
+* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
-### STEP-5: CREATING THE DEV PROFILE
-Create a new file in the resources folder as application-dev.properties and give the server.port=8083
-Now change the profile in the application.properties file as spring.profiles.active=dev
-In dev profile give the embedded database details like database url, driverClassName, userName, password, databasePlatform...
-
-### STEP-6: CREATING THE STUDENT CLASS
-Create the student class containing 4 variables, generate parameterized constructor and default constructor,
-Generate getters and setters for all the variables and generate toString()
-Annotate the student class @Entity and id variables with @Id annotation.
-Create another class which is extending RuntimeException class, name it as "StudentNtFoundException"
-
-### STEP-7: CREATING STUDENT DATABASE:
-Create a jpa repository(right click on student package --> new --> spring Data --> projection ) and name it as StudentRepository.
-Now give the @Repository annotation to the StudentRepository class.
-
-### STEP-8: CREATING CONTROLLER:
-Create a class for the controller and make controller class as a RESTController and declare a StudentRepository object variable and
-annotate that object variable as "@Autowired"
-
-### STEP-9: PROVIDING AUTHENTICATION
-Create a class extending "WebSecurityConfigurerAdapter" class and add all the security dependencies in pom.xml file
-Update the maven project
-provide GET requests,DELETE requests  access to "user" roles only and PUT requests,POST requests access to only "admin" roles.
-
-### STEP-10: BUILDING AND RUNNING THE CODE
-Open the terminal and run "mvn clean install" command to build and then run the "mvn spring-boot:run" command to run the application
-
-### STEP-11: TEST WITH POSTMAN
-GET http://localhost:8083/students
-POST http://localhost:8083/students
-PUT http://localhost:8083/students/1
-DELETE http://localhost:8083/students/1
-
-### STEP-7 TEST WITH CURL
-
-#### CURL GET:
-
-curl --location --request GET 'localhost:8083/students' \
---header 'Authorization: Basic dXNlcjEyMzpwYXNzd29yZA==' \
---header 'Cookie: JSESSIONID=7CC94FAD6F7532A7F5FE5C1B678843FD'
-
-#### CURL POST:
-curl --location --request POST 'localhost:8083/students' \
---header 'Authorization: Basic YWRtaW4xMjM6cGFzc3dvcmQ=' \
---header 'Content-Type: application/json' \
---header 'Cookie: JSESSIONID=7CC94FAD6F7532A7F5FE5C1B678843FD' \
---data-raw '{
-
-    "name": "iDontKnow",
-    "age": "23",
-    "rollNo": "D6",
-    "std": "Engineering"
-}'
-
-#### CURL PUT:
-curl --location --request PUT 'localhost:8083/students/1' \
---header 'Content-Type: application/json' \
---header 'Cookie: JSESSIONID=7CC94FAD6F7532A7F5FE5C1B678843FD' \
---data-raw '{
-
-    "name": "Dumb",
-    "age": "22",
-    "rollNo": "D7",
-    "std": "Engineering"
-}'
-#### CURL DELETE:
-curl --location --request DELETE 'localhost:8083/students/1' \
---header 'Authorization: Basic dXNlcjEyMzpwYXNzd29yZA==' \
---header 'Cookie: JSESSIONID=7CC94FAD6F7532A7F5FE5C1B678843FD'
