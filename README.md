@@ -1,3 +1,25 @@
+[//]: # (make the app as the spring boot application and annotate with the necessary annotations)
+
+[//]: # (now create a resources folder inside the main folder and create application.properties for both profiles)
+
+[//]: # (now update the dev profile application.yml file with mysql -url, -user, -password details)
+
+[//]: # (now create docker-compose-mysql.yml file in the project&#40;student&#41; directory)
+
+[//]: # (update the docker-compose-mysql.yml file, inside the services give the image, environment variables, ports...)
+
+[//]: # (create a students package which consists of controller, repository and security as the sub packages)
+
+[//]: # (create a student class with all the variables and generate getters, setters and constructors)
+
+[//]: # (now create a student repository interface which will extend the jpa repository, give the student class as entity and give it  @Id annotation to primary key)
+
+[//]: # (now create a new class StudentNotFoundException extending the RuntimeException class)
+
+[//]: # (now create a student controller and annotate it with rest controller)
+
+[//]: # (now create student repository object variable and give it autowired annotation)
+
 ## Name: E. Shyam Sunder Reddy
 ## TCS_EmpId: 2278249
 
@@ -9,7 +31,7 @@ Import the created project as maven project into Intellij
 
 ### STEP-3: ADDING THE DEPENDENCIES TO THE POM.XML FILE
 Add the latest version parent tag, Spring-starter,web,test, dependencies and load the Maven project
-Add Spring JPA, Devtools, H2 database, Json dataFormat,security dependencies, and load the Maven project 
+Add Spring JPA, Devtools, H2 database, Json dataFormat,security dependencies, and load the Maven project
 
 ### STEP-4: CREATING THE SPRINGBOOT APPLICATION
 Make the App class as the SpringBootApplication and  give all the necessary annotations.
@@ -90,3 +112,6 @@ curl --location --request PUT 'localhost:8083/students/1' \
 curl --location --request DELETE 'localhost:8083/students/1' \
 --header 'Authorization: Basic dXNlcjEyMzpwYXNzd29yZA==' \
 --header 'Cookie: JSESSIONID=044C55AC02FEB6D4C16A30C754EAD225'
+
+
+
